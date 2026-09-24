@@ -1,9 +1,12 @@
 import Image from "next/image";
+import Banner from './components/homepage/Banner'
+import Library from "./components/homepage/Library";
 
 export default function Home() {
   return (
     <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <Banner/>
+      <Library/>
     </div>
   );
 }
