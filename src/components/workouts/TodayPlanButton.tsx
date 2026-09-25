@@ -4,18 +4,20 @@ import { WorkoutContext } from '@/context/WorkoutProvider';
 import { IWorkout } from '@/types/workout.type';
 import { CalendarPlus } from 'lucide-react';
 import  { useContext } from 'react';
+import { toast } from 'react-toastify';
 
 const TodayPlanButton = ({workout}: {workout: IWorkout}) => {
     const {todayPlan, setTodayPlan} = useContext(WorkoutContext)
 
-    console.log(todayPlan);
+
     
 
 
     const handleTodayPlan = () =>{
-        console.log("today button triggered" , workout);
+        
 
         setTodayPlan([...todayPlan, workout])
+        toast.success(`${workout.name} added in Planlist`)
         
     }
 

@@ -32,7 +32,8 @@ const TodayPlanCard = ({
         <Image
           src={workout.image}
           alt={workout.name}
-          fill
+          width={140}
+          height={100}
           className="object-cover"
         />
       </div>

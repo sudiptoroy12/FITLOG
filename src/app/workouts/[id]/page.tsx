@@ -20,7 +20,7 @@ const WorkoutDetails = async ({ params }: IWorkoutsDetailsPageProps) => {
     (workout: IWorkout) => workout.id === Number(id),
   ) as IWorkout;
 
-  console.log(workout);
+
 
   return (
     <main className="min-h-screen   py-8 text-white sm:px-8 lg:px-10">

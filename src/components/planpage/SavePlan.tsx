@@ -9,7 +9,7 @@ const SavePlan = () => {
 
     const {savePlan} = useContext(WorkoutContext)
 
-    console.log(savePlan);
+  
     
     return (
         <div className="">

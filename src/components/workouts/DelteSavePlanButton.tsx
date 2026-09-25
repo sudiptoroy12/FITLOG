@@ -3,6 +3,7 @@ import { WorkoutContext } from "@/context/WorkoutProvider";
 import { IWorkout } from "@/types/workout.type";
 import { X } from "lucide-react";
 import { useContext } from "react";
+import { toast } from "react-toastify";
 
 interface DeletesavePlanButtonProps {
   workout: IWorkout;
@@ -13,11 +14,12 @@ const DeleteSavePlanButton = ({
 }: DeletesavePlanButtonProps) => {
   const { savePlan, setSavePlan } = useContext(WorkoutContext);
 
-  console.log(savePlan);
+
 
   const handlesavePlanDelete = () => {
     const remainsavePlan = savePlan.filter((item) => item.id !== workout.id);
     setSavePlan(remainsavePlan);
+    toast.warn(`${workout.name} deleted from Savelist`)
   };
 
   return (

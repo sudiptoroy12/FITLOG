@@ -3,6 +3,7 @@ import { WorkoutContext } from "@/context/WorkoutProvider";
 import { IWorkout } from "@/types/workout.type";
 import { X } from "lucide-react";
 import { useContext } from "react";
+import { toast } from "react-toastify";
 
 interface DeleteTodayPlanButtonProps {
   workout: IWorkout;
@@ -13,11 +14,12 @@ const DeleteTodayPlanButton = ({
 }: DeleteTodayPlanButtonProps) => {
   const { todayPlan, setTodayPlan } = useContext(WorkoutContext);
 
-  console.log(todayPlan);
+
 
   const handleTodayPlanDelete = () => {
     const remainTodayPlan = todayPlan.filter((item) => item.id !== workout.id);
     setTodayPlan(remainTodayPlan);
+    toast.warn(`${workout.name} deleted from Planlist`)
   };
 
   return (

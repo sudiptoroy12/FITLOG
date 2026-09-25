@@ -8,7 +8,7 @@ import EmptyPlan from "./EmptyPlan";
 const TodayPlan = () => {
   const { todayPlan } = useContext(WorkoutContext);
 
-  console.log(todayPlan);
+
 
   return (
     <div className="">

@@ -5,18 +5,20 @@ import { IWorkout } from '@/types/workout.type';
 import { Bookmark } from 'lucide-react';
 
 import  { useContext } from 'react';
+import { toast } from 'react-toastify';
 
 const SavePlanButton = ({workout}: {workout: IWorkout}) => {
     const {savePlan, setSavePlan} = useContext(WorkoutContext)
 
-    console.log(savePlan);
+   
     
 
 
     const handleSavePlan = () =>{
-        console.log("today button triggered" , workout);
+
 
         setSavePlan([...savePlan, workout])
+        toast.success(`${workout.name} added in Savelist`)
         
     }
 
