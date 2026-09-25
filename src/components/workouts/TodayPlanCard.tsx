@@ -1,4 +1,4 @@
-"use client";
+
 
 import Image from "next/image";
 import Link from "next/link";
@@ -11,11 +11,13 @@ import {
 } from "lucide-react";
 
 import { IWorkout } from "@/types/workout.type";
+import DeleteTodayPlanButton from "./DeleteTodayPlanButton";
 
 interface TodayPlanCardProps {
   workout: IWorkout;
 
 }
+
 
 const TodayPlanCard = ({
   workout
@@ -106,13 +108,7 @@ const TodayPlanCard = ({
         </button>
 
         {/* Remove */}
-        <button
-         
-          aria-label="Remove workout"
-          className="rounded-full p-2 text-[#737A85] transition hover:bg-[#1D2128] hover:text-white"
-        >
-          <X size={17} />
-        </button>
+      <DeleteTodayPlanButton workout={workout} />
 
       </div>
     </div>

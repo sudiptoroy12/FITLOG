@@ -18,9 +18,13 @@ export const WorkoutContext = createContext<IWorkoutContext>({
   setSavePlan: () => {},
 });
 
+
+
 const WorkoutProvider = ({ children }: { children: ReactNode }) => {
   const [todayPlan, setTodayPlan] = useState<IWorkout[]>([]);
   const [savePlan, setSavePlan] = useState<IWorkout[]>([]);
+
+  
 
   const sharedData = {
     todayPlan,
