@@ -5,14 +5,17 @@ import Link from "next/link";
 import logo from "../../assets/logo.png";
 import Image from "next/image";
 import { RxCross1 } from "react-icons/rx";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { usePathname } from "next/navigation";
+import { WorkoutContext } from "@/context/WorkoutProvider";
+import Saveplan from "@/app/saveplan/page";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname()
+  const pathname = usePathname();
+      const {savePlan, todayPlan} = useContext(WorkoutContext)
   return (
-    <nav className="w-full bg-black shadow-md border-b ">
+    <nav className="w-full bg-black shadow-md border-b sticky top-0 z-50">
       <div className="max-w-7xl  mx-auto px-6  py-4  flex items-center justify-between ">
         {/*Hamburger*/}
         <button
@@ -52,34 +55,58 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         <div className="hidden md:flex items-center text-[#9CA3AF]">
-      <ul className="flex gap-2">
-        <li>
-          <Link
-            href="/workouts"
-            className={`px-4 py-2 rounded-full ${
-              pathname === "/workouts"
-                ? "bg-[#1A2312] text-[#C2F800]"
-                : "hover:bg-[#1A2312] hover:text-[#C2F800]"
-            }`}
-          >
-            Workouts
-          </Link>
-        </li>
+          <ul className="flex gap-2">
+            <li>
+              <Link
+                href="/"
+                className={`px-4 py-2 rounded-full ${
+                  pathname === "/"
+                    ? "bg-[#1A2312] text-[#C2F800]"
+                    : "hover:bg-[#1A2312] hover:text-[#C2F800]"
+                }`}
+              >
+                Workouts
+              </Link>
+            </li>
 
-        <li>
-          <Link
-            href="/myplan"
-            className={`px-4 py-2 rounded-full ${
-              pathname === "/myplan"
-                ? "bg-[#1A2312] text-[#C2F800]"
-                : "hover:bg-[#1A2312] hover:text-[#C2F800]"
-            }`}
-          >
-            Myplan
-          </Link>
-        </li>
-      </ul>
-    </div>
+            <li>
+              <Link
+                href="/myplan"
+                className={`px-4 py-2 rounded-full ${
+                  pathname === "/myplan"
+                    ? "bg-[#1A2312] text-[#C2F800]"
+                    : "hover:bg-[#1A2312] hover:text-[#C2F800]"
+                }`}
+              >
+                Myplan
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/todayplan"
+                className={`px-4 py-2 rounded-full ${
+                  pathname === "/todayplan"
+                    ? "bg-[#1A2312] text-[#C2F800]"
+                    : "hover:bg-[#1A2312] hover:text-[#C2F800]"
+                }`}
+              >
+                todayplan
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/saveplan"
+                className={`px-4 py-2 rounded-full ${
+                  pathname === "/saveplan"
+                    ? "bg-[#1A2312] text-[#C2F800]"
+                    : "hover:bg-[#1A2312] hover:text-[#C2F800]"
+                }`}
+              >
+                saveplan
+              </Link>
+            </li>
+          </ul>
+        </div>
 
         {/* Buttons */}
         <div className="flex items-center gap-1 text-[#9CA3AF]">
@@ -91,7 +118,7 @@ const Navbar = () => {
               >
                 Plan
                 <span className="flex justify-center bg-[#C2F800]  ml-2 px-1.5 rounded-full text-s  text-black  border border-[#9CA3AF]">
-                  0
+                  {todayPlan.length}
                 </span>
               </Link>
             </div>
@@ -102,7 +129,7 @@ const Navbar = () => {
               >
                 Saved
                 <span className="flex  justify-center ml-2  px-1.5 rounded-full text-s  text-[#9CA3AF]  border border-gray-300">
-                  0
+                {savePlan.length}
                 </span>
               </Link>
             </div>
@@ -112,33 +139,33 @@ const Navbar = () => {
       {/* Mobile Navigation */}
       {isOpen && (
         <div className="mt-5 h-[400px]   flex  flex-col justify-center items-center gap-6 border-t pt-5 md:hidden text-[#9CA3AF]">
-        <ul className="flex flex-col gap-5">
-        <li>
-          <Link
-            href="/workouts"
-            className={`px-4 py-2 rounded-full ${
-              pathname === "/workouts"
-                ? "bg-[#1A2312] text-[#C2F800]"
-                : "hover:bg-[#1A2312] hover:text-[#C2F800]"
-            }`}
-          >
-            Workouts
-          </Link>
-        </li>
+          <ul className="flex flex-col gap-5">
+            <li>
+              <Link
+                href="/"
+                className={`px-4 py-2 rounded-full ${
+                  pathname === "/"
+                    ? "bg-[#1A2312] text-[#C2F800]"
+                    : "hover:bg-[#1A2312] hover:text-[#C2F800]"
+                }`}
+              >
+                Workouts
+              </Link>
+            </li>
 
-        <li>
-          <Link
-            href="/myplan"
-            className={`px-4 py-2 rounded-full ${
-              pathname === "/myplan"
-                ? "bg-[#1A2312] text-[#C2F800]"
-                : "hover:bg-[#1A2312] hover:text-[#C2F800]"
-            }`}
-          >
-            Myplan
-          </Link>
-        </li>
-      </ul>
+            <li>
+              <Link
+                href="/myplan"
+                className={`px-4 py-2 rounded-full ${
+                  pathname === "/myplan"
+                    ? "bg-[#1A2312] text-[#C2F800]"
+                    : "hover:bg-[#1A2312] hover:text-[#C2F800]"
+                }`}
+              >
+                Myplan
+              </Link>
+            </li>
+          </ul>
         </div>
       )}
     </nav>

@@ -1,43 +1,32 @@
-
-
 import Image from "next/image";
-import {
-  CalendarPlus,
-  Bookmark,
-  Star,
-} from "lucide-react";
-import { getAllData, getSingleData} from "@/lib/Datafetch";
+import { CalendarPlus, Bookmark, Star } from "lucide-react";
+import {  getSingleData } from "@/lib/Datafetch";
 import { IWorkout } from "@/types/workout.type";
+import TodayPlanButton from "@/components/workouts/TodayPlanButton";
+import SavePlanButton from "@/components/workouts/SavePlanButton";
 
 interface IWorkoutsDetailsPageProps {
-    params : Promise<{
-        id: string
-    }>
+  params: Promise<{
+    id: string;
+  }>;
 }
 
+const WorkoutDetails = async ({ params }: IWorkoutsDetailsPageProps) => {
+  const { id } = await params;
 
+  const detailsData = await getSingleData();
 
+  const workout = detailsData.find(
+    (workout: IWorkout) => workout.id === Number(id),
+  ) as IWorkout;
 
-const WorkoutDetails = async({params}: IWorkoutsDetailsPageProps) => {
-    const {id} = await params
+  console.log(workout);
 
-
-    const detailsData = await getSingleData()
-    console.log(detailsData);
-    
-  
-    const workout = detailsData.find((workout:IWorkout) => workout.id === Number(id)) as IWorkout
-
-     console.log(workout);
-    
-    
   return (
     <main className="min-h-screen   py-8 text-white sm:px-8 lg:px-10">
       <div className="mx-auto max-w-7xl">
-
         {/* Main Details Container */}
         <div className="grid overflow-hidden lg:grid-cols-2 mx-6 ">
-
           {/* ================= IMAGE ================= */}
           <div className="relative min-h-[400px] lg:min-h-[600px]  items-center flex">
             <Image
@@ -51,7 +40,6 @@ const WorkoutDetails = async({params}: IWorkoutsDetailsPageProps) => {
 
           {/* ================= CONTENT ================= */}
           <div className="p-4 sm:p-6 ">
-
             {/* Workout Name */}
             <h1 className="text-3xl font-extrabold uppercase tracking-wide text-white sm:text-4xl">
               {workout.name}
@@ -76,31 +64,15 @@ const WorkoutDetails = async({params}: IWorkoutsDetailsPageProps) => {
 
             {/* ================= STATS ================= */}
             <div className="mt-4 overflow-hidden rounded-xl border border-[#292D35] bg-[#16191F]">
+              <DetailRow label="Equipment" value={workout.equipment} />
 
-              <DetailRow
-                label="Equipment"
-                value={workout.equipment}
-              />
+              <DetailRow label="Difficulty" value={workout.difficulty} />
 
-              <DetailRow
-                label="Difficulty"
-                value={workout.difficulty}
-              />
+              <DetailRow label="Sets" value={workout.sets.toString()} />
 
-              <DetailRow
-                label="Sets"
-                value={workout.sets.toString()}
-              />
+              <DetailRow label="Reps" value={workout.reps} />
 
-              <DetailRow
-                label="Reps"
-                value={workout.reps}
-              />
-
-              <DetailRow
-                label="Duration"
-                value={`${workout.duration} min`}
-              />
+              <DetailRow label="Duration" value={`${workout.duration} min`} />
 
               <DetailRow
                 label="Calories"
@@ -113,19 +85,14 @@ const WorkoutDetails = async({params}: IWorkoutsDetailsPageProps) => {
                 </span>
 
                 <div className="flex items-center gap-2 text-sm text-white">
-                  <Star
-                    size={16}
-                    className="fill-[#C2F800] text-[#C2F800]"
-                  />
+                  <Star size={16} className="fill-[#C2F800] text-[#C2F800]" />
                   {workout.rating}
                 </div>
               </div>
-
             </div>
 
             {/* ================= INSTRUCTIONS ================= */}
             <div className="mt-3">
-
               <h2 className="text-sm font-bold uppercase tracking-wide text-white">
                 Instructions
               </h2>
@@ -144,39 +111,22 @@ const WorkoutDetails = async({params}: IWorkoutsDetailsPageProps) => {
                   </li>
                 ))}
               </ol>
-
             </div>
 
             {/* ================= BUTTONS ================= */}
             <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+              <TodayPlanButton workout={workout}/>
 
-              <button
-                className="flex items-center justify-center gap-2 rounded-lg bg-[#C2F800] px-5 py-3 text-sm font-bold text-black transition hover:bg-[#d0ff33]"
-              >
-                <CalendarPlus size={17} />
-                Add to today&apos;s plan
-              </button>
-
-              <button
-                className="flex items-center justify-center gap-2 rounded-lg border border-[#353A44] bg-transparent px-5 py-3 text-sm font-medium text-white transition hover:bg-[#1A1D23]"
-              >
-                <Bookmark size={17} />
-                Save for later
-              </button>
-
+              <SavePlanButton workout={workout}/>
             </div>
-
           </div>
         </div>
       </div>
     </main>
-   
   );
 };
 
 export default WorkoutDetails;
-
-
 
 /* ================= DETAIL ROW ================= */
 
@@ -192,11 +142,7 @@ const DetailRow = ({ label, value }: DetailRowProps) => {
         {label}
       </span>
 
-      <span className="text-sm text-[#E5E7EB]">
-        {value}
-      </span>
+      <span className="text-sm text-[#E5E7EB]">{value}</span>
     </div>
   );
 };
-
-
