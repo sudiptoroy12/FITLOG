@@ -168,7 +168,7 @@ const MyPlan = () => {
 
         </section>
         <section>
-        {activeTab == "today" ? <TodayPlan sortWorkouts={sortWorkouts} /> : <SavePlan/>}
+        {activeTab == "today" ? <TodayPlan sortWorkouts={sortWorkouts} /> : <SavePlan sortWorkouts={sortWorkouts}/>}
         </section>
 
 

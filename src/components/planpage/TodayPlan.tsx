@@ -2,7 +2,7 @@
 
 import TodayPlanCard from "@/components/workouts/TodayPlanCard";
 import { WorkoutContext } from "@/context/WorkoutProvider";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import EmptyPlan from "./EmptyPlan";
 import { IWorkout } from "@/types/workout.type";
 
