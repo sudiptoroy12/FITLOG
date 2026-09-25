@@ -1,14 +1,14 @@
 "use client";
 
-import Link from "next/link";
 
 import {
   ChevronDown,
 } from "lucide-react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import SavePlan from "@/components/planpage/SavePlan";
 import TodayPlan from "@/components/planpage/TodayPlan";
 import { IWorkout } from "@/types/workout.type";
+import { WorkoutContext } from "@/context/WorkoutProvider";
 
 
 
@@ -35,6 +35,34 @@ const MyPlan = () => {
 
     return sortedWorkouts;
   };
+
+
+    const { todayPlan, savePlan} = useContext(WorkoutContext);
+
+
+
+ const totalTodayExercises = todayPlan.length;
+ const totalSaveExercises = savePlan.length;
+
+  const totalTodayMinutes = todayPlan.reduce(
+    (total, workout) => total + workout.duration,
+    0
+  );
+  const totalSaveMinutes = savePlan.reduce(
+    (total, workout) => total + workout.duration,
+    0
+  );
+
+  const totalTodayCalories = todayPlan.reduce(
+    (total, workout) => total + workout.caloriesBurned,
+    0
+  );
+  const totalSaveCalories = savePlan.reduce(
+    (total, workout) => total + workout.caloriesBurned,
+    0
+  );
+
+ 
 
    
 
@@ -68,7 +96,7 @@ const MyPlan = () => {
             </p>
 
             <p className="mt-1 text-3xl font-extrabold text-[#C2F800]">
-            5
+            {activeTab === "today" ? totalTodayExercises : totalSaveExercises}
             </p>
           </div>
 
@@ -79,7 +107,7 @@ const MyPlan = () => {
             </p>
 
             <p className="mt-1 text-3xl font-extrabold">
-             14
+             {activeTab === "today" ? totalTodayMinutes : totalSaveMinutes}
             </p>
           </div>
 
@@ -90,7 +118,7 @@ const MyPlan = () => {
             </p>
 
             <p className="mt-1 text-3xl font-extrabold">
-              55
+               {activeTab === "today" ? totalTodayCalories : totalSaveCalories}
             </p>
           </div>
 
