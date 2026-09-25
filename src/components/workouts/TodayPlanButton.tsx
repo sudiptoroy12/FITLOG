@@ -19,12 +19,20 @@ const TodayPlanButton = ({ workout }: { workout: IWorkout }) => {
   };
 
   return (
+    
     <button
       className="flex items-center justify-center gap-2 rounded-lg bg-[#C2F800] px-5 py-3 text-sm font-bold text-black transition hover:bg-[#d0ff33]"
       onClick={() => handleTodayPlan()}
     >
-      <CalendarPlus size={17} />
-      Add to today&apos;s plan
+        {isSelected ? (
+          "✓ Added to today's plan"
+        ) : (
+          <>
+            <CalendarPlus size={17} />
+            Add to today&apos;s plan
+          </>
+        )}
+      
     </button>
   );
 };

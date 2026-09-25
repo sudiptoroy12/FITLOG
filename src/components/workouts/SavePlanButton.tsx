@@ -26,8 +26,13 @@ const SavePlanButton = ({ workout }: { workout: IWorkout }) => {
       className="flex items-center justify-center gap-2 rounded-lg border border-[#353A44] bg-transparent px-5 py-3 text-sm font-medium text-white transition hover:bg-[#1A1D23] "
       onClick={() => handleSavePlan()}
     >
-      <Bookmark size={17} />
+        {isSelected ? ("✓ Saved") : (
+            <>
+            <Bookmark size={17} />
       Save for later
+            </>
+        )}
+      
     </button>
   );
 };
