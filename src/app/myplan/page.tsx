@@ -8,6 +8,7 @@ import {
 import { useState } from "react";
 import SavePlan from "@/components/planpage/SavePlan";
 import TodayPlan from "@/components/planpage/TodayPlan";
+import { IWorkout } from "@/types/workout.type";
 
 
 
@@ -16,9 +17,26 @@ import TodayPlan from "@/components/planpage/TodayPlan";
 const MyPlan = () => {
     const [activeTab, setActiveTab] = useState<"today" | "saved">("today");
 
-     const [sortBy, setSortBy] = useState<
-    "duration" | "calories" | "rating"
-  >("duration");
+
+      const [sortBy, setSortBy] = useState<"duration" | "calories" | "rating">(
+    "duration",
+  );
+
+  const sortWorkouts = (workouts: IWorkout[]) => {
+    const sortedWorkouts = [...workouts];
+
+    if (sortBy === "duration") {
+      sortedWorkouts.sort((a, b) => b.duration - a.duration);
+    } else if (sortBy === "calories") {
+      sortedWorkouts.sort((a, b) => b.caloriesBurned - a.caloriesBurned);
+    } else if (sortBy === "rating") {
+      sortedWorkouts.sort((a, b) => b.rating - a.rating);
+    }
+
+    return sortedWorkouts;
+  };
+
+   
 
 
 
@@ -150,7 +168,7 @@ const MyPlan = () => {
 
         </section>
         <section>
-        {activeTab == "today" ? <TodayPlan/> : <SavePlan/>}
+        {activeTab == "today" ? <TodayPlan sortWorkouts={sortWorkouts} /> : <SavePlan/>}
         </section>
 
 
