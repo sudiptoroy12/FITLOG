@@ -8,7 +8,7 @@ import { RxCross1 } from "react-icons/rx";
 import { useContext, useState } from "react";
 import { usePathname } from "next/navigation";
 import { WorkoutContext } from "@/context/WorkoutProvider";
-import Saveplan from "@/app/saveplan/page";
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -81,30 +81,7 @@ const Navbar = () => {
                 Myplan
               </Link>
             </li>
-            <li>
-              <Link
-                href="/todayplan"
-                className={`px-4 py-2 rounded-full ${
-                  pathname === "/todayplan"
-                    ? "bg-[#1A2312] text-[#C2F800]"
-                    : "hover:bg-[#1A2312] hover:text-[#C2F800]"
-                }`}
-              >
-                todayplan
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/saveplan"
-                className={`px-4 py-2 rounded-full ${
-                  pathname === "/saveplan"
-                    ? "bg-[#1A2312] text-[#C2F800]"
-                    : "hover:bg-[#1A2312] hover:text-[#C2F800]"
-                }`}
-              >
-                saveplan
-              </Link>
-            </li>
+         
           </ul>
         </div>
 

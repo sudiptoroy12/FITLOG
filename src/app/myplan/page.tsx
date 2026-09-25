@@ -4,11 +4,10 @@ import Link from "next/link";
 
 import {
   ChevronDown,
-  Clock3,
-  Flame,
-  Dumbbell,
 } from "lucide-react";
 import { useState } from "react";
+import SavePlan from "@/components/planpage/SavePlan";
+import TodayPlan from "@/components/planpage/TodayPlan";
 
 
 
@@ -73,7 +72,7 @@ const MyPlan = () => {
             </p>
 
             <p className="mt-1 text-3xl font-extrabold">
-              555
+              55
             </p>
           </div>
 
@@ -149,6 +148,9 @@ const MyPlan = () => {
             </div>
           </div>
 
+        </section>
+        <section>
+        {activeTab == "today" ? <TodayPlan/> : <SavePlan/>}
         </section>
 
 

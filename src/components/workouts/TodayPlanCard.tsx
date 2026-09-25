@@ -1,0 +1,122 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import {
+  Clock3,
+  Flame,
+  Star,
+  Check,
+  X,
+} from "lucide-react";
+
+import { IWorkout } from "@/types/workout.type";
+
+interface TodayPlanCardProps {
+  workout: IWorkout;
+
+}
+
+const TodayPlanCard = ({
+  workout
+ 
+}: TodayPlanCardProps) => {
+  return (
+    <div className="flex w-full items-center gap-4 rounded-2xl border border-[#292D35] bg-[#15181E] p-3 transition hover:border-[#C2F800]/30">
+
+      {/* ================= IMAGE ================= */}
+
+      <div className="relative h-[72px] w-[125px] shrink-0 overflow-hidden rounded-xl">
+        <Image
+          src={workout.image}
+          alt={workout.name}
+          fill
+          className="object-cover"
+        />
+      </div>
+
+      {/* ================= WORKOUT INFO ================= */}
+
+      <div className="min-w-0 flex-1">
+
+        {/* Name */}
+        <h3 className="truncate text-sm font-extrabold uppercase tracking-wide text-white">
+          {workout.name}
+        </h3>
+
+        {/* Equipment */}
+        <p className="mt-0.5 truncate text-xs text-[#858B96]">
+          {workout.equipment}
+        </p>
+
+        {/* Stats */}
+        <div className="mt-2 flex items-center gap-4 text-xs text-[#A1A6B0]">
+
+          {/* Duration */}
+          <span className="flex items-center gap-1.5">
+            <Clock3
+              size={14}
+              className="text-[#C2F800]"
+            />
+            {workout.duration} min
+          </span>
+
+          {/* Calories */}
+          <span className="flex items-center gap-1.5">
+            <Flame
+              size={14}
+              className="text-[#C2F800]"
+            />
+            {workout.caloriesBurned} kcal
+          </span>
+
+          {/* Rating */}
+          <span className="flex items-center gap-1.5">
+            <Star
+              size={14}
+              className="fill-[#C2F800] text-[#C2F800]"
+            />
+            {workout.rating}
+          </span>
+
+        </div>
+      </div>
+
+      {/* ================= ACTIONS ================= */}
+
+      <div className="flex shrink-0 items-center gap-2">
+
+        {/* View Details */}
+        <Link
+          href={`/workouts/${workout.id}`}
+          className="hidden rounded-full border border-[#353A44] px-5 py-2.5 text-xs font-medium text-white transition hover:bg-[#1D2128] sm:block"
+        >
+          View Details
+        </Link>
+
+        {/* Mark as Done */}
+        <button
+         
+          className="flex items-center gap-2 rounded-full bg-[#C2F800] px-5 py-2.5 text-xs font-bold text-black transition hover:bg-[#D2FF2B]"
+        >
+          <Check size={14} strokeWidth={3} />
+          <span className="hidden sm:inline">
+            Mark as Done
+          </span>
+        </button>
+
+        {/* Remove */}
+        <button
+         
+          aria-label="Remove workout"
+          className="rounded-full p-2 text-[#737A85] transition hover:bg-[#1D2128] hover:text-white"
+        >
+          <X size={17} />
+        </button>
+
+      </div>
+    </div>
+  );
+};
+
+export default TodayPlanCard;
