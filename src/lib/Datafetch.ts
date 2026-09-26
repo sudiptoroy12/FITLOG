@@ -2,7 +2,7 @@
 
 export const getAllData = async () => {
   try {
-    const res = await fetch("https://api.abcz.workers.dev/api/fitlog",{cache:"force-cache"});
+    const res = await fetch("https://api.api-store.workers.dev/api/fitlog",{cache:"force-cache"});
      if (!res.ok) {
       throw new Error(`Failed to fetch workouts: ${res.status}`);
     }
@@ -16,7 +16,7 @@ export const getAllData = async () => {
 export const getSingleData = async (id: string) => {
   try {
     const res = await fetch(
-      `https://api.abcz.workers.dev/api/fitlog/${id}`,
+      `https://api.api-store.workers.dev/api/fitlog/${id}`,
       {
         next: { revalidate: 60 },
       }

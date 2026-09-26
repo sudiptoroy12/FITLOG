@@ -10,7 +10,8 @@ interface WorkoutCardProps {
 const LibraryCard = ({ workout }: WorkoutCardProps) => {
   return (
     <div className="group w-full max-w-[470px] overflow-hidden rounded-2xl border border-[#292D35] bg-[#15171C] transition-all duration-300 hover:-translate-y-1 hover:border-[#C2F800]/40">
-      {/* Image */}
+      {/* Image */} 
+      <Link href={`/workouts/${workout.id}`}>
       <div className="relative h-[240px] w-full overflow-hidden">
         <Image
           src={workout.image}
@@ -23,7 +24,7 @@ const LibraryCard = ({ workout }: WorkoutCardProps) => {
         {/* Image overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
       </div>
-      <Link href={`/workouts/${workout.id}`}>
+    
         {/* Content */}
         <div className="p-7">
           {/* Muscle Group */}

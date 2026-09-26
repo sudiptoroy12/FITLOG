@@ -87,12 +87,12 @@ const TodayPlanCard = ({
 
       {/* ================= ACTIONS ================= */}
 
-      <div className="flex shrink-0 items-center gap-2">
+      <div className="flex  items-center gap-2 ">
 
         {/* View Details */}
         <Link
           href={`/workouts/${workout.id}`}
-          className="hidden rounded-full border border-[#353A44] px-5 py-2.5 text-xs font-medium text-white transition hover:bg-[#1D2128] sm:block"
+          className="hidden rounded-full border border-[#353A44] px-5 py-2.5  text-xs font-medium text-white transition hover:bg-[#1D2128] sm:block"
         >
           View Details
         </Link>
