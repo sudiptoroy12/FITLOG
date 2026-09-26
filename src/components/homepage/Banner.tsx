@@ -32,7 +32,7 @@ const Banner = () => {
         </div>
 
         {/* Right Side */}
-        <div className="w-full lg:w-1/2 flex justify-center">
+        <div className="w-full lg:w-1/2 flex h-auto  justify-center">
           <Image src={banner} width={400} height={400} alt="Banner logo" />
         </div>
       </div>

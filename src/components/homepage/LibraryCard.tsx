@@ -17,7 +17,7 @@ const LibraryCard = ({ workout }: WorkoutCardProps) => {
           alt={workout.name}
           width={500}
           height={400}
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className=" transition-transform duration-500 group-hover:scale-105"
         />
 
         {/* Image overlay */}

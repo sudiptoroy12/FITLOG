@@ -1,9 +1,10 @@
 import Image from "next/image";
 import {  Star } from "lucide-react";
 import {  getSingleData } from "@/lib/Datafetch";
-import { IWorkout } from "@/types/workout.type";
+
 import TodayPlanButton from "@/components/workouts/TodayPlanButton";
 import SavePlanButton from "@/components/workouts/SavePlanButton";
+import { IWorkout } from "@/types/workout.type";
 
 interface IWorkoutsDetailsPageProps {
   params: Promise<{
@@ -14,11 +15,12 @@ interface IWorkoutsDetailsPageProps {
 const WorkoutDetails = async ({ params }: IWorkoutsDetailsPageProps) => {
   const { id } = await params;
 
-  const detailsData = await getSingleData();
+  const workout:IWorkout = await getSingleData(id);
 
-  const workout = detailsData.find(
-    (workout: IWorkout) => workout.id === Number(id),
-  ) as IWorkout;
+
+ if (!workout) {
+    return <div>Workout not found</div>;
+  }
 
 
 
@@ -34,7 +36,7 @@ const WorkoutDetails = async ({ params }: IWorkoutsDetailsPageProps) => {
               alt={workout.name}
               width={1000}
               height={500}
-              className="object-cover rounded-2xl"
+              className="rounded-2xl"
             />
           </div>
 

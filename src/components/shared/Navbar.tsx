@@ -57,7 +57,7 @@ const Navbar = () => {
             height={20}
             src={logo}
             alt="FITLOG Logo"
-            className="h-auto"
+            
           />
 
           <Link
