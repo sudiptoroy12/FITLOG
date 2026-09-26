@@ -1,5 +1,4 @@
-import next from "next";
-import { revalidatePath } from "next/cache";
+
 
 export const getAllData = async () => {
   try {
