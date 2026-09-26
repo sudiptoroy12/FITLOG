@@ -23,6 +23,7 @@ const Navbar = () => {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
 
         {/* ================= HAMBURGER ================= */}
+        <div className="flex items-center gap-3">
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
@@ -50,7 +51,7 @@ const Navbar = () => {
         </button>
 
         {/* ================= LOGO ================= */}
-        <div className="flex items-center gap-2">
+        
           <Image
             width={30}
             height={20}
@@ -137,11 +138,7 @@ const Navbar = () => {
 
           <div className="mx-auto max-w-md">
 
-            {/* Mobile Menu Header */}
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#555B66]">
-              Navigation
-            </p>
-
+          
             <div className="space-y-2">
 
               {/* Workouts */}
