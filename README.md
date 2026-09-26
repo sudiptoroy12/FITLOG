@@ -10,9 +10,9 @@ Built with **Next.js, TypeScript, and Tailwind CSS**, FitLog provides a clean da
 
 ## Live Preview
 
-**Live Website:** [Add your live website URL here]
+**Live Website:** [(https://fitlog-pink-two.vercel.app/)]
 
-**Repository:** [Add your GitHub repository URL here]
+**Repository:** [(https://github.com/sudiptoroy12/FITLOG)]
 
 ---
 
