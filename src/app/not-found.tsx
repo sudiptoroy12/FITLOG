@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Dumbbell, Search } from "lucide-react";
+import { ArrowLeft, Dumbbell} from "lucide-react";
 
 const NotFound = () => {
   return (

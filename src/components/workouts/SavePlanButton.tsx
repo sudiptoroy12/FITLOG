@@ -23,7 +23,7 @@ const SavePlanButton = ({ workout }: { workout: IWorkout }) => {
 
   return (
     <button
-      className="flex items-center justify-center gap-2 rounded-lg border border-[#353A44] bg-transparent px-5 py-3 text-sm font-medium text-white transition hover:bg-[#1A1D23] "
+      className="flex items-center justify-center gap-2 rounded-lg border border-[#353A44] bg-transparent px-5 py-3 text-sm font-medium text-white transition hover:bg-[#1A1D23] cursor-pointer "
       onClick={() => handleSavePlan()}
     >
         {isSelected ? ("✓ Saved") : (

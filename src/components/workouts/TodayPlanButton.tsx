@@ -21,7 +21,7 @@ const TodayPlanButton = ({ workout }: { workout: IWorkout }) => {
   return (
     
     <button
-      className="flex items-center justify-center gap-2 rounded-lg bg-[#C2F800] px-5 py-3 text-sm font-bold text-black transition hover:bg-[#d0ff33]"
+      className="flex items-center justify-center gap-2 rounded-lg bg-[#C2F800] px-5 py-3 text-sm font-bold text-black transition hover:bg-[#d0ff33] cursor-pointer"
       onClick={() => handleTodayPlan()}
     >
         {isSelected ? (
