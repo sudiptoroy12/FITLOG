@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CalendarPlus, Bookmark, Star } from "lucide-react";
+import {  Star } from "lucide-react";
 import {  getSingleData } from "@/lib/Datafetch";
 import { IWorkout } from "@/types/workout.type";
 import TodayPlanButton from "@/components/workouts/TodayPlanButton";

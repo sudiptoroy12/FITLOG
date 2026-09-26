@@ -18,3 +18,7 @@ html::-webkit-scrollbar {
 }
 
 
+html {
+  scroll-behavior: smooth;
+}
+

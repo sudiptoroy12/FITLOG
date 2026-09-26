@@ -1,3 +1,4 @@
+import Link from "next/link";
 import banner from "../../assets/banner.png";
 import Image from "next/image";
 
@@ -19,14 +20,14 @@ const Banner = () => {
 
           {/* Buttons */}
           <div className="flex  gap-4 mt-3 justify-center lg:justify-start">
-            <button
+            <Link href="#workouts"
               className="border bg-[#C2F800] font-semibold
             px-6 py-3 rounded-lg hover:bg-
              duration-300 cursor-pointer 
             w-full sm:w-auto"
             >
               BROWSE WORKOUTS
-            </button>
+            </Link>
           </div>
         </div>
 
